@@ -1,1 +1,12 @@
-
+Day 1, 9 Maret 2026
+-role:penetration tester
+-materi:-pengenalan offensive dan defensive security
+        -pemilihan careers (penetration tester)
+        -Network adalah sekumpulan perangkat (komputer, printer, router, dll.) yang saling terhubung untuk berbagi data dan sumber daya
+        -Internet itu jaringan global yang menghubungkan jutaan komputer dan perangkat di seluruh dunia
+        -IP(Internet Protocol)
+        -MAC(Media Access Control
+        -Internet ada dua tipe (private/pribadi and publik
+        -IP ada 4 sesi octet dengan masing-masing nomor 0-255
+        -MAC punya 12 karakter heksadesimal(a4:c3:f0:85:ac:2d)
+        -MAC dapat di palsukan (spoofing) 
