@@ -10,3 +10,15 @@ Day 1, 9 Maret 2026
         -IP ada 4 sesi octet dengan masing-masing nomor 0-255
         -MAC punya 12 karakter heksadesimal(a4:c3:f0:85:ac:2d)
         -MAC dapat di palsukan (spoofing) 
+
+Day 2, 10 Maret 2026
+-materi:-Ping (uses Internet Control Message Protocol(ICMP))
+        -syntax Ping is Ping 10.10.10.10/IP addres
+        -DNS(Domain Name Server)
+        -DNS hierachy(Root(.), Top Level Domain(.com, .edu, .org), Second Level Domain(github, tryhackme, shopee), Subdomain(eft-hand side of the Second-Level Domain "admin.tryhackme")
+        -SLD punya batas karakter yaitu 63 word dan hanya bisa menggunakan a-z and 0-9(cannot start or end with hyphens or have consecutive hyphens)
+        -Subdomain hampir mirip dengan SLD namun bisa di gandakan "admin.stecu.tryhackme" dan batas karakter 253 serta ga punya limit untuk buat subdomain
+        -DNS Record Types(A,AAAA,CNAME,MX,TXT record)
+        -waktu lama DNS harus disimpan di cache(Time To Live)
+        -ISP menyediakan recursive DNS
+        -Tipe Server yang menyimpan semua DNS record adalah authoritative 
