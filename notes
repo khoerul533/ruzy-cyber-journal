@@ -1,24 +1,96 @@
 Day 1, 9 Maret 2026
--role:penetration tester
--materi:-pengenalan offensive dan defensive security
-        -pemilihan careers (penetration tester)
-        -Network adalah sekumpulan perangkat (komputer, printer, router, dll.) yang saling terhubung untuk berbagi data dan sumber daya
-        -Internet itu jaringan global yang menghubungkan jutaan komputer dan perangkat di seluruh dunia
-        -IP(Internet Protocol)
-        -MAC(Media Access Control
-        -Internet ada dua tipe (private/pribadi and publik
-        -IP ada 4 sesi octet dengan masing-masing nomor 0-255
-        -MAC punya 12 karakter heksadesimal(a4:c3:f0:85:ac:2d)
-        -MAC dapat di palsukan (spoofing) 
+-role: penetration tester
+-materi: ## pengenalan offensive dan defensive security
+         ## pemilihan careers (penetration tester)
+         ## Network adalah sekumpulan perangkat (komputer, printer, router, dll.) yang saling terhubung untuk berbagi data dan sumber daya
+         ## Internet itu jaringan global yang menghubungkan jutaan komputer dan perangkat di seluruh dunia
+         ## IP(Internet Protocol)
+         ## MAC(Media Access Control
+         ## Internet ada dua tipe (private/pribadi and publik
+         ## IP ada 4 sesi octet dengan masing-masing nomor 0-255
+         ## MAC punya 12 karakter heksadesimal(a4:c3:f0:85:ac:2d)
+         ## MAC dapat di palsukan (spoofing) 
 
 Day 2, 10 Maret 2026
--materi:-Ping (uses Internet Control Message Protocol(ICMP))
-        -syntax Ping is Ping 10.10.10.10/IP addres
-        -DNS(Domain Name Server)
-        -DNS hierachy(Root(.), Top Level Domain(.com, .edu, .org), Second Level Domain(github, tryhackme, shopee), Subdomain(eft-hand side of the Second-Level Domain "admin.tryhackme")
-        -SLD punya batas karakter yaitu 63 word dan hanya bisa menggunakan a-z and 0-9(cannot start or end with hyphens or have consecutive hyphens)
-        -Subdomain hampir mirip dengan SLD namun bisa di gandakan "admin.stecu.tryhackme" dan batas karakter 253 serta ga punya limit untuk buat subdomain
-        -DNS Record Types(A,AAAA,CNAME,MX,TXT record)
-        -waktu lama DNS harus disimpan di cache(Time To Live)
-        -ISP menyediakan recursive DNS
-        -Tipe Server yang menyimpan semua DNS record adalah authoritative 
+-materi: ## Ping (uses Internet Control Message Protocol(ICMP))
+         ## syntax Ping is Ping 10.10.10.10/IP addres
+         ## DNS(Domain Name Server)
+         ## DNS hierachy(Root(.), Top Level Domain(.com, .edu, .org), Second Level Domain(github, tryhackme, shopee), Subdomain(eft-hand side of the Second-Level Domain "admin.tryhackme")
+         ## SLD punya batas karakter yaitu 63 word dan hanya bisa menggunakan a-z and 0-9(cannot start or end with hyphens or have consecutive hyphens)
+         ## Subdomain hampir mirip dengan SLD namun bisa di gandakan "admin.stecu.tryhackme" dan batas karakter 253 serta ga punya limit untuk buat subdomain
+         ## DNS Record Types(A,AAAA,CNAME,MX,TXT record)
+         ## waktu lama DNS harus disimpan di cache(Time To Live)
+         ## ISP menyediakan recursive DNS
+         ## Tipe Server yang menyimpan semua DNS record adalah authoritative 
+Day 3, 11 Maret 2026
+-materi: ## HTTP and HTTPS(HyperText Transfer Protocol, same but S is Secure)
+         ## URL(Uniform Resource Locator)
+         ## URL have Scheme, User, Host, Port, Path, Query String, Fragment
+         ## Request
+                GET / HTTP/1.1
+                Host: tryhackme.com
+                User-Agent: Mozilla/5.0 Firefox/87.0
+                Referer: https://tryhackme.com/
+
+         Line 1: Method GET, halaman `/`, protokol HTTP/1.1  
+         Line 2: Host tujuan  
+         Line 3: Identitas browser (User-Agent)  
+         Line 4: Referer (asal halaman)  
+         Line 5: Blank line → akhir request  
+
+                HTTP/1.1 200 OK
+                Server: nginx/1.15.8
+                Date: Fri, 09 Apr 2021 13:34:03 GMT
+                Content-Type: text/html
+                Content-Length: 98
+
+        Line 1: Versi protokol + status code (200 = sukses)  
+        Line 2: Software server  
+        Line 3: Waktu server  
+        Line 4: Jenis konten (HTML, dll.)  
+        Line 5: Panjang data (Content-Length)  
+        Line 6: Blank line → akhir header  
+        Body: isi halaman (HTML)  
+        
+        ## Content-Length adalah header di HTTP response yang memberitahu browser berapa banyak data (dalam byte) yang akan diterima
+        ## HTTP Method
+        GET → minta data dari server (contoh: buka halaman web)
+        POST → kirim data ke server (contoh: submit form login)
+        PUT → update/replace data di server
+        DELETE → hapus data di server
+
+        ## HTTP Status Code
+1xx (Informational) → info sementara (contoh: 100 Continue)
+2xx (Success) → berhasil (contoh: 200 OK, 201 Created)
+3xx (Redirection) → butuh pindah ke lokasi lain (contoh: 301 Moved Permanently, 302 Found)
+4xx (Client Error) → kesalahan dari sisi client (contoh: 400 Bad Request, 404 Not Found)
+5xx (Server Error) → kesalahan dari sisi server (contoh: 500 Internal Server Error, 503 Service Unavailable)
+
+        ## Header
+- Info tambahan dalam request/response  
+- Request Header: Host, User-Agent, Referer, Content-Length, Accept-Encoding, Cookie  
+- Response Header: Server, Date, Content-Type, Content-Length, Set-Cookie, Cache-Control  
+
+Day 4, 12 Maret 2026
+-materi: ##         =====Cookie====
+        - Data kecil yang disimpan di browser, dikirim ke server tiap request berikutnya.
+        - Fungsi: session login, preferensi user, tracking.
+        - **Response Header:** `Set-Cookie: name=adam` → server menyuruh browser simpan cookie.
+        - **Request Header:** `Cookie: name=adam` → browser kirim cookie ke server.
+        - Alur:
+          1. Client minta halaman (GET).
+          2. Server balas + `Set-Cookie`.
+          3. Client simpan cookie.
+          4. Request berikutnya → client kirim cookie ke server.
+          5. Server bisa kenali user (contoh: tampilkan "Welcome back adam").
+
+## Melihat Cookie di Browser
+1. Buka Developer Tools (F12).
+2. Klik tab **Network** → akan muncul daftar request.
+3. Pilih salah satu request → lihat detail request & response.
+4. Kalau browser mengirim cookie, akan muncul di tab **Cookies**.
+5. Tab **Application/Storage** juga bisa dipakai untuk melihat semua cookie yang tersimpan.
+
+
+
+
